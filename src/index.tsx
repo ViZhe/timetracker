@@ -8,6 +8,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import './index.css';
 import configureStore, { history } from './store';
 import Home from './routes/Home';
+import NotFound from './routes/NotFound';
 // import * as serviceWorker from './serviceWorker';
 
 
@@ -17,6 +18,7 @@ ReactDOM.render(
       <>
         <Switch>
           <Route path="/" component={Home} exact={true} />
+          <Route component={NotFound} />
         </Switch>
       </>
     </ConnectedRouter>
