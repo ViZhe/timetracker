@@ -1,6 +1,7 @@
 {
   "name": "timetracker",
   "version": "0.1.0",
+  "author": "ViZhe",
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.5",
