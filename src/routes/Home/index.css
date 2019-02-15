@@ -9,13 +9,44 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: white;
 }
 
 .home__header {
-  font-size: calc(10px + 2vmin);
+  font-size: calc(22px + 2vmin);
+  color: white;
 }
 
 .home__body {
   margin-top: 1rem;
+  font-size: calc(11px + 1vmin);
+  color: white;
+}
+
+.home__footer {
+  margin-top: 2rem;
+}
+
+.home__start {
+  display: inline-flex;
+  align-items: center;
+  padding: .5rem 4rem;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: bottom;
+  cursor: pointer;
+  user-select: none;
+  background-color: rgb(242, 123, 54);
+  border: 0;
+  border-radius: 4px;
+  transition: cubic-bezier(.47, 0, .745, .715)all .25s;
+}
+
+.home__start:hover,
+.home__start:focus {
+  text-decoration: none;
+  background-color: rgb(102, 186, 106);
 }
