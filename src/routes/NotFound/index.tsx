@@ -18,4 +18,4 @@ const NotFound: React.FC = () => (
 );
 
 
-export default NotFound;
+export default React.memo(NotFound);
