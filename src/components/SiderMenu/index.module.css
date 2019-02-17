@@ -1,0 +1,33 @@
+
+.sider {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+}
+
+.logo {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin: 16px;
+  padding-left: .5rem;
+}
+
+.logoIcon {
+  font-size: 32px;
+  color: #fff;
+}
+
+.logoName {
+  margin-left: 1rem;
+  color: #fff;
+  font-size: 20px;
+  transition: all .25s ease;
+}
+
+:global(.ant-layout-sider-collapsed) .logoName {
+  margin-left: .5rem;
+  opacity: 0;
+}
