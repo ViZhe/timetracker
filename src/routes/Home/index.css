@@ -25,28 +25,3 @@
 .home__footer {
   margin-top: 2rem;
 }
-
-.home__start {
-  display: inline-flex;
-  align-items: center;
-  padding: .5rem 4rem;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1.7;
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  vertical-align: bottom;
-  cursor: pointer;
-  user-select: none;
-  background-color: rgb(242, 123, 54);
-  border: 0;
-  border-radius: 4px;
-  transition: cubic-bezier(.47, 0, .745, .715)all .25s;
-}
-
-.home__start:hover,
-.home__start:focus {
-  text-decoration: none;
-  background-color: rgb(102, 186, 106);
-}
