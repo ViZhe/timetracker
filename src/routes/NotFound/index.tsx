@@ -1,18 +1,19 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'antd';
 
-import './index.css';
+import styles from './index.module.css';
 
 
 const NotFound: React.FC = () => (
-  <div className="notFound">
-    <div className="notFound__box">
-      <div className="notFound__header">Oops, hmmm!</div>
-      <div className="notFound__body">Something went wrong.</div>
-      <div className="notFound__footer">
-        <Link to="/" className="notFound__btn">Home</Link>
-      </div>
+  <div className={styles.box} >
+    <div className={styles.header} >Oops, hmmm!</div>
+    <div className={styles.body} >Something went wrong.</div>
+    <div className={styles.footer} >
+      <Link to="/">
+        <Button type="primary" icon="home" size="large">Home</Button>
+      </Link>
     </div>
   </div>
 );
