@@ -2,7 +2,6 @@
 import React, { Component } from 'react';
 import { Layout } from 'antd';
 
-import styles from './index.module.css';
 import SiderMenu from '../../components/SiderMenu';
 import GlobalHeader from '../../components/GlobalHeader';
 
@@ -13,8 +12,6 @@ type Props = {
 type State = {
   collapsed: boolean;
 };
-
-const { Content } = Layout;
 
 class App extends Component<Props, State> {
   readonly state: State = {
@@ -28,14 +25,14 @@ class App extends Component<Props, State> {
   }
 
   render() {
+    const { children } = this.props;
+
     return (
       <Layout>
         <SiderMenu collapsed={this.state.collapsed} onCollapse={this.toggle} />
         <Layout>
           <GlobalHeader collapsed={this.state.collapsed} onClickTrigger={this.toggle} />
-          <Content className={styles.content} >
-            Content
-          </Content>
+          {children}
         </Layout>
       </Layout>
     );
