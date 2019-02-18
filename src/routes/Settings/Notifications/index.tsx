@@ -2,11 +2,11 @@
 import React from 'react';
 
 
-const Notification = () => (
+const Notifications = () => (
   <div>
     {'hello notification'}
   </div>
 );
 
 
-export default React.memo(Notification);
+export default React.memo(Notifications);
