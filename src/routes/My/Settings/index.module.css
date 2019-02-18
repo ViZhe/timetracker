@@ -1,0 +1,11 @@
+
+.content {
+  margin: 1.5rem 1rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  min-Height: 280px
+}
+
+.content :global(.ant-tabs-nav .ant-tabs-tab-active) {
+  font-weight: 400;
+}
