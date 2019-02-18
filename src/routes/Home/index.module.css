@@ -1,8 +1,5 @@
 
-/* .home {
-} */
-
-.home__box {
+.box {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -11,17 +8,17 @@
   justify-content: center;
 }
 
-.home__header {
+.header {
   font-size: calc(22px + 2vmin);
   color: white;
 }
 
-.home__body {
+.body {
   margin-top: 1rem;
   font-size: calc(11px + 1vmin);
   color: white;
 }
 
-.home__footer {
+.footer {
   margin-top: 2rem;
 }
