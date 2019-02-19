@@ -42,6 +42,8 @@
     "@types/redux-form": "^7.5.2",
     "@types/redux-logger": "^3.0.7",
     "tslint": "^5.12.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.3.3"
   }
