@@ -1,21 +1,22 @@
 
+import { Icon, Layout, Menu } from 'antd';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Icon } from 'antd';
 
 import styles from './index.module.css';
 
 
-type Props = {
+interface IProps {
   collapsed: boolean;
   onCollapse: () => void;
-};
+}
 
 const { Sider } = Layout;
 
-class SiderMenu extends Component<Props> {
+class SiderMenu extends Component<IProps, {}> {
   render() {
-    const { collapsed, onCollapse } = this.props;
+    const { collapsed, onCollapse }: IProps = this.props;
+
     return (
       <Sider
         className={styles.sider}

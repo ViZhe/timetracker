@@ -1,24 +1,20 @@
 
-
-import React, { Component, Suspense, lazy } from 'react';
+import { Empty, Layout, Menu } from 'antd';
+import React, { Component, Suspense } from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
-import { Menu, Layout, Empty } from 'antd';
 
-import styles from './index.module.css';
 import SectionLoading from '../../components/SectionLoading';
+import styles from './index.module.css';
 
 
-type Props = {
-};
-
-type State = {
+interface IState {
   current: 'projects';
-};
+}
 
 const { Content } = Layout;
 
-class Reports extends Component<Props, State> {
-  readonly state: State = {
+class Reports extends Component<{}, IState> {
+  readonly state: IState = {
     current: 'projects',
   };
 
@@ -51,7 +47,7 @@ class Reports extends Component<Props, State> {
           <Switch>
             <Redirect from="/reports" to="/reports/projects" exact={true} />
             <Route path="/reports/projects" component={Empty} exact={true} />
-            <Route><Empty style={{marginTop: 100}} description={'Page not found'} /></Route>
+            <Route><Empty style={{ marginTop: 100 }} description={'Page not found'} /></Route>
           </Switch>
         </Suspense>
       </Content>

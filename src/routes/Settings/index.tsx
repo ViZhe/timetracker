@@ -1,24 +1,22 @@
 
-import React, { Component, Suspense, lazy } from 'react';
+import { Empty, Layout, Menu    } from 'antd';
+import React, { Component, lazy, Suspense } from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
-import { Menu, Layout, Empty } from 'antd';
 
-import styles from './index.module.css';
 import SectionLoading from '../../components/SectionLoading';
+import styles from './index.module.css';
 
 
-type Props = {
-};
-
-type State = {
-};
+interface IState {
+  current: 'base';
+}
 
 const Base = lazy(() => import('./Base'));
 const Notifications = lazy(() => import('./Notifications'));
 const { Content } = Layout;
 
-class Settings extends Component<Props, State> {
-  readonly state = {
+class Settings extends Component<{}, IState> {
+  readonly state: IState = {
     current: 'base',
   };
 
@@ -52,7 +50,7 @@ class Settings extends Component<Props, State> {
             <Redirect from="/settings" to="/settings/base" exact={true} />
             <Route path="/settings/base" component={Base} exact={true} />
             <Route path="/settings/notifications" component={Notifications} exact={true} />
-            <Route><Empty style={{marginTop: 100}} description={'Page not found'} /></Route>
+            <Route><Empty style={{ marginTop: 100 }} description={'Page not found'} /></Route>
           </Switch>
         </Suspense>
       </Content>

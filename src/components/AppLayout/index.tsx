@@ -1,20 +1,17 @@
 
-import React, { Component } from 'react';
 import { Layout } from 'antd';
+import React, { Component } from 'react';
 
-import SiderMenu from '../../components/SiderMenu';
 import GlobalHeader from '../../components/GlobalHeader';
+import SiderMenu from '../../components/SiderMenu';
 
 
-type Props = {
-};
-
-type State = {
+interface IState {
   collapsed: boolean;
-};
+}
 
-class App extends Component<Props, State> {
-  readonly state: State = {
+class AppLayout extends Component<{}, IState> {
+  readonly state: IState = {
     collapsed: false,
   };
 
@@ -40,4 +37,4 @@ class App extends Component<Props, State> {
 }
 
 
-export default App;
+export default AppLayout;

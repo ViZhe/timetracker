@@ -1,18 +1,18 @@
 
+import { Icon, Layout } from 'antd';
 import React, { Component } from 'react';
-import { Layout, Icon } from 'antd';
 
 import styles from './index.module.css';
 
 
-type Props = {
+interface IProps {
   collapsed: boolean;
   onClickTrigger: () => void;
-};
+}
 
 const { Header } = Layout;
 
-class GlobalHeader extends Component<Props> {
+class GlobalHeader extends Component<IProps, {}> {
   render() {
     const { collapsed, onClickTrigger } = this.props;
     return (

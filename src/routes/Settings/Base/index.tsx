@@ -1,18 +1,18 @@
 
-import React, { Component } from 'react';
 import {
-  Form, Input, Tooltip, Icon, Button, message,
+  Button, Form, Icon, Input, message, Tooltip,
 } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
+import React, { Component } from 'react';
 
 import styles from './index.module.css';
 
 
-type Props = {};
-type State = {};
+interface IProps extends FormComponentProps {}
+interface IState {}
 
-class Base extends Component<Props & FormComponentProps, State> {
-  readonly state: State = {};
+class Base extends Component<IProps, IState> {
+  readonly state: IState = {};
 
   handleSubmit = (e: React.SyntheticEvent<HTMLElement>) => {
     e.preventDefault();
@@ -24,7 +24,7 @@ class Base extends Component<Props & FormComponentProps, State> {
       }
       message.error('Error');
     });
-  };
+  }
 
   render() {
     const { getFieldDecorator } = this.props.form;

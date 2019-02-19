@@ -1,9 +1,9 @@
 
-import React, { lazy, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
 import { Empty } from 'antd';
+import React, { lazy, Suspense } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import AppLayout from '../../components/App';
+import AppLayout from '../../components/AppLayout';
 import SectionLoading from '../../components/SectionLoading';
 
 
@@ -18,7 +18,7 @@ const App: React.FC = () => (
         <Route path="/dashboard" component={Dashboard} exact={true} />
         <Route path="/reports" component={Reports} />
         <Route path="/settings" component={Settings} />
-        <Route><Empty style={{marginTop: '10rem'}} description={'Page not found'} /></Route>
+        <Route><Empty style={{ marginTop: '10rem' }} description={'Page not found'} /></Route>
       </Switch>
     </Suspense>
   </AppLayout>

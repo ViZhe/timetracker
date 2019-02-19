@@ -1,6 +1,6 @@
 
-import React from 'react';
 import { Spin } from 'antd';
+import React from 'react';
 
 import styles from './index.module.css';
 
