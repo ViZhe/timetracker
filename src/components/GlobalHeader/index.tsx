@@ -16,7 +16,7 @@ class GlobalHeader extends Component<Props> {
   render() {
     const { collapsed, onClickTrigger } = this.props;
     return (
-      <Header style={{ background: '#fff', padding: 0 }}>
+      <Header className={styles.header}>
         <Icon
           className={styles.trigger}
           type={collapsed ? 'menu-unfold' : 'menu-fold'}
