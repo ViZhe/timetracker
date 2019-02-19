@@ -45,7 +45,7 @@ class Base extends Component<IProps, IState> {
             {getFieldDecorator('name', {
               rules: [{ required: true, message: 'Please input your name!', whitespace: true }],
             })(
-              <Input />
+              <Input />,
             )}
           </Form.Item>
           <Form.Item>
