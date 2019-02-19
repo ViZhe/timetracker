@@ -1,0 +1,12 @@
+
+.wrapper {
+  padding-top: 2rem;
+  max-width: 350px;
+}
+
+.title {
+  margin-bottom: 20px;
+  color: #0d1a26;
+  font-weight: 500;
+  font-size: 30px;
+}
