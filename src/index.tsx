@@ -1,25 +1,25 @@
 
-import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import React, { Suspense } from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 
-import './index.css';
-import configureStore, { history } from './store';
-import routes from './routes';
 import PageLoading from './components/PageLoading';
+import './index.css';
+import routes from './routes';
+import { configureStore, history } from './store';
 // import * as serviceWorker from './serviceWorker';
 
 
-ReactDOM.render(
-  <Provider store={configureStore({})}>
+render(
+  <Provider store={configureStore()}>
     <ConnectedRouter history={history}>
       <Suspense fallback={<PageLoading />}>
         {routes}
       </Suspense>
     </ConnectedRouter>
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
