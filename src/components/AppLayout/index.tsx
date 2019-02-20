@@ -1,40 +1,26 @@
 
 import { Layout } from 'antd';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import GlobalHeader from '../../components/GlobalHeader';
 import SiderMenu from '../../components/SiderMenu';
 
 
-interface IState {
-  collapsed: boolean;
-}
+const AppLayout: React.FC = ({ children }) => {
+  const [isCollapsed, setCollapsed] = useState<boolean>(false);
 
-class AppLayout extends Component<{}, IState> {
-  readonly state: IState = {
-    collapsed: false,
-  };
+  const toggleCollapsed = () => setCollapsed(!isCollapsed);
 
-  toggle = (): void => {
-    this.setState({
-      collapsed: !this.state.collapsed,
-    });
-  }
-
-  render() {
-    const { children } = this.props;
-
-    return (
+  return (
+    <Layout>
+      <SiderMenu collapsed={isCollapsed} onCollapse={toggleCollapsed} />
       <Layout>
-        <SiderMenu collapsed={this.state.collapsed} onCollapse={this.toggle} />
-        <Layout>
-          <GlobalHeader collapsed={this.state.collapsed} onClickTrigger={this.toggle} />
-          {children}
-        </Layout>
+        <GlobalHeader collapsed={isCollapsed} onClickTrigger={toggleCollapsed} />
+        {children}
       </Layout>
-    );
-  }
-}
+    </Layout>
+  );
+};
 
 
 export default AppLayout;
