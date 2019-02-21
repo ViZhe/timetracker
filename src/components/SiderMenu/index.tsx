@@ -24,10 +24,12 @@ class SiderMenu extends Component<IProps, {}> {
         collapsed={collapsed}
         onCollapse={onCollapse}
       >
-        <div className={styles.logo}>
-          <Icon type="clock-circle" className={styles.logoIcon} />
-          <span className={styles.logoName}>TimeTracker</span>
-        </div>
+        <Link to="/">
+          <div className={styles.logo}>
+            <Icon type="clock-circle" className={styles.logoIcon} />
+            <span className={styles.logoName}>TimeTracker</span>
+          </div>
+        </Link>
         <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
           <Menu.Item key="1">
             <Link to="/dashboard">
