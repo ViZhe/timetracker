@@ -20,10 +20,10 @@ const mapStateToProps = (state: any) => ({
 });
 
 const Home: React.FC<IBaseProps> = ({ user }) => (
-  <div className={styles.box} >
-    <div className={styles.header} >Hello, {user.name || 'anonymous'}!</div>
-    <div className={styles.body} >Let's start tracking you time together &#59;&#41;</div>
-    <div className={styles.footer} >
+  <div className={styles.box}>
+    <div className={styles.header}>Hello, {user.name || 'anonymous'}!</div>
+    <div className={styles.body}>Let's start tracking you time together &#59;&#41;</div>
+    <div className={styles.footer}>
       <Link to="/dashboard">
         <Button type="primary" icon="play-circle" size="large">Start</Button>
       </Link>

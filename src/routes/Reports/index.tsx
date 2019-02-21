@@ -26,7 +26,7 @@ class Reports extends Component<{}, IState> {
 
   render() {
     return (
-      <Content className={styles.content} >
+      <Content className={styles.content}>
         <Menu
           onClick={this.handleClick}
           selectedKeys={[this.state.current]}
