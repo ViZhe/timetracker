@@ -1,33 +1,48 @@
 
-import {
-  Button, Form, Icon, Input, message, Tooltip,
-} from 'antd';
+import { Button, Form, Icon, Input, message, Tooltip } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { userActions, userSelectors } from '../../../features/user';
 import styles from './index.module.css';
 
 
-interface IProps extends FormComponentProps {}
-interface IState {}
+interface IBaseProps extends FormComponentProps {
+  setData: ({}: any) => void;
+  user: {
+    name: string | null;
+  };
+}
 
-class Base extends Component<IProps, IState> {
-  readonly state: IState = {};
 
+const mapStateToProps = (state: any) => ({
+  user: userSelectors.getUser(state.user),
+});
+
+const mapDispatchToProps = () => ({
+  setData: userActions.setData,
+});
+
+class Base extends Component<IBaseProps> {
   handleSubmit = (e: React.SyntheticEvent<HTMLElement>) => {
     e.preventDefault();
+
     this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        console.log('Received values of form: ', values);
-        message.success('Success');
+      if (err) {
+        message.error('Error');
         return;
       }
-      message.error('Error');
+
+      this.props.setData(values);
+      message.success('Success');
     });
   }
 
   render() {
-    const { getFieldDecorator } = this.props.form;
+    const { form } = this.props;
+    const { getFieldDecorator } = form;
+
     return (
       <div className={styles.wrapper}>
         <h1 className={styles.title}>Base Settings</h1>
@@ -57,7 +72,14 @@ class Base extends Component<IProps, IState> {
   }
 }
 
-
-export default Form.create<FormComponentProps>({
-  name: 'register',
+const BaseForm = Form.create({
+  mapPropsToFields(props: IBaseProps) {
+    return {
+      name: Form.createFormField({ value: props.user.name }),
+    };
+  },
+  name: 'updateUserData',
 })(Base);
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(BaseForm);
