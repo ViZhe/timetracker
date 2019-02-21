@@ -82,4 +82,4 @@ const BaseForm = Form.create({
 })(Base);
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(BaseForm);
+export default connect(mapStateToProps, mapDispatchToProps())(BaseForm);
