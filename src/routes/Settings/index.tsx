@@ -1,5 +1,5 @@
 
-import { Empty, Layout, Menu    } from 'antd';
+import { Empty, Layout, Menu } from 'antd';
 import React, { Component, lazy, Suspense } from 'react';
 import { Link, Redirect, Route, Switch } from 'react-router-dom';
 
