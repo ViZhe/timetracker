@@ -37,16 +37,22 @@ class SiderMenu extends Component<IProps, {}> {
               <span>Home</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="2">
+          <Menu.Item key="reports">
             <Link to="/reports">
               <Icon type="pie-chart" />
               <span>Reports</span>
             </Link>
           </Menu.Item>
-          <Menu.Item key="3">
+          <Menu.Item key="settings">
             <Link to="/settings">
               <Icon type="setting" />
               <span>Settings</span>
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="notmatch">
+            <Link to="/notmatch">
+              <Icon type="lock" />
+              <span>Error</span>
             </Link>
           </Menu.Item>
         </Menu>
