@@ -1,0 +1,22 @@
+
+.wrapper {
+  margin: 1.5rem 1rem;
+  min-Height: 280px
+}
+
+.tableListOperator {
+  margin-bottom: 1rem;
+}
+
+.tableListOperatorText {
+  margin-right: 1rem;
+}
+
+.tableListOperator button {
+  margin-right: .5rem;
+}
+
+.columnTime,
+.columnDuration {
+  text-align: right;
+}
