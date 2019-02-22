@@ -30,9 +30,9 @@ class SiderMenu extends Component<IProps, {}> {
             <span className={styles.logoName}>TimeTracker</span>
           </div>
         </Link>
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-          <Menu.Item key="1">
-            <Link to="/dashboard">
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={['time']}>
+          <Menu.Item key="time">
+            <Link to="/time">
               <Icon type="home" />
               <span>Home</span>
             </Link>
