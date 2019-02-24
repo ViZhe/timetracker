@@ -21,13 +21,11 @@ interface ITimeState {
 
 
 const { Content } = Layout;
-
 const chance = new Chance();
 
 const mapStateToProps = (state: any) => ({
   times: timesSelectors.getTimes(state.times),
 });
-
 const mapDispatchToProps = {
   addTimeEntry: timesActions.add,
 };
@@ -73,7 +71,6 @@ class Time extends Component<ITimeProps, ITimeState> {
     };
 
     return (
-      <>
       <Content className={styles.wrapper}>
         <Card bordered={false}>
           <div className={styles.tableListOperator}>
@@ -124,7 +121,6 @@ class Time extends Component<ITimeProps, ITimeState> {
           </Table>
         </Card>
       </Content>
-      </>
     );
   }
 }
