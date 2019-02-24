@@ -1,11 +1,17 @@
 
 import { Button, Card, Layout, Table, Tag } from 'antd';
+import Chance from 'chance';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { timesActions, timesSelectors } from '../../features/times';
+import { ITimesData, ITimesState } from '../../features/times/models';
 import styles from './index.module.css';
 
 
 interface ITimeProps {
+  times: ITimesState;
+  addTimeEntry: (data: ITimesData) => void;
 }
 
 interface ITimeState {
@@ -14,41 +20,26 @@ interface ITimeState {
 }
 
 
+const { Content } = Layout;
+
+const chance = new Chance();
+
+const mapStateToProps = (state: any) => ({
+  times: timesSelectors.getTimes(state.times),
+});
+
+const mapDispatchToProps = {
+  addTimeEntry: timesActions.add,
+};
+
 const renderTags = (tags: [string]) => (
   tags.map(tag => (
     <Tag key={tag}>{tag.toUpperCase()}</Tag>
   ))
 );
-
-const columns = [{
-  dataIndex: 'description',
-  title: 'Description',
-}, {
-  dataIndex: 'tags',
-  render: renderTags,
-  title: 'Tags',
-}, {
-  className: styles.columnTime,
-  dataIndex: 'time',
-  width: 130,
-}, {
-  className: styles.columnDuration,
-  dataIndex: 'duration',
-  width: 120,
-}];
-
-const data: any = [];
-for (let i = 0; i < 46; i++) {
-  data.push({
-    description: `London, Park Lane no. ${i}`,
-    duration: `2h ${String(59 - i).padStart(2, '0')} min`,
-    key: i,
-    tags: ['generated', `tag${i}`],
-    time: `20:${String(i).padStart(2, '0')} - 22:40`,
-  });
-}
-
-const { Content } = Layout;
+const renderTime = (text: string, record: ITimesData) => (
+  `${record.timeStart} - ${record.timeEnd}`
+);
 
 class Time extends Component<ITimeProps, ITimeState> {
   readonly state:ITimeState = {
@@ -56,7 +47,21 @@ class Time extends Component<ITimeProps, ITimeState> {
     selectedKeys: [],
   };
 
+  componentDidMount() {
+    for (let i = 0; i < 10; i++) {
+      this.props.addTimeEntry({
+        description: chance.sentence({ words: 5 }),
+        duration: `${chance.hour({ twentyfour: true })}h ${chance.minute()} min`,
+        key: chance.guid(),
+        tags: [chance.word(), `tag ${i}`],
+        timeEnd: `${chance.hour()}:${chance.minute()}`,
+        timeStart: `${chance.hour()}:${chance.minute()}`,
+      });
+    }
+  }
+
   render() {
+    const { times } = this.props;
     const { selectedKeys } = this.state;
     const rowSelection = {
       getCheckboxProps: (record: any) => ({
@@ -89,10 +94,34 @@ class Time extends Component<ITimeProps, ITimeState> {
           </div>
           <Table
             rowSelection={rowSelection}
-            columns={columns}
-            dataSource={data}
+            dataSource={times.data}
             pagination={false}
-          />
+          >
+            <Table.Column
+              key="description"
+              dataIndex="description"
+              title="Description"
+            />
+            <Table.Column
+              key="tags"
+              dataIndex="tags"
+              title="Tags"
+              render={renderTags}
+            />
+            <Table.Column
+              key="time"
+              dataIndex="time"
+              className={styles.columnTime}
+              width={130}
+              render={renderTime}
+            />
+            <Table.Column
+              key="duration"
+              dataIndex="duration"
+              className={styles.columnDuration}
+              width={120}
+            />
+          </Table>
         </Card>
       </Content>
       </>
@@ -101,4 +130,4 @@ class Time extends Component<ITimeProps, ITimeState> {
 }
 
 
-export default Time;
+export default connect(mapStateToProps, mapDispatchToProps)(Time);
