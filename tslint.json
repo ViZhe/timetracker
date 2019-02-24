@@ -11,7 +11,8 @@
       true,
       {
         "indexModuleCss": "styles",
-        "react": "React"
+        "react": "React",
+        "chance": "Chance"
       }
     ],
     "member-access": false,
