@@ -79,7 +79,8 @@ class Time extends Component<ITimeProps, ITimeState> {
                 <span
                   className={styles.tableListOperatorText}
                 >
-                  <b>{selectedKeys.length}</b> time entry selected
+                  <b>{selectedKeys.length}</b>
+                  <> time {selectedKeys.length > 1 ? 'entries' : 'entry'} selected</>
                 </span>
                 <Button disabled={true}>Explode World</Button>
                 <Button type="danger" icon="delete">Delete </Button>
