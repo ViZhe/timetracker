@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import { timesActions, timesSelectors } from '../../features/times';
 import { ITimesData, ITimesState } from '../../features/times/models';
+import { RootState } from '../../store';
 import styles from './index.module.css';
 
 
@@ -22,7 +23,7 @@ interface ITimeState {
 
 const { Content } = Layout;
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
   times: timesSelectors.getTimes(state.times),
 });
 const mapDispatchToProps = {

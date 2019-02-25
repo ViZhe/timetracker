@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { userSelectors } from '../../features/user';
+import { RootState } from '../../store';
 import styles from './index.module.css';
 
 
@@ -15,7 +16,7 @@ interface IBaseProps {
 }
 
 
-const mapStateToProps = (state: any) => ({
+const mapStateToProps = (state: RootState) => ({
   user: userSelectors.getUser(state.user),
 });
 

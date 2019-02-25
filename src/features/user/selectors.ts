@@ -1,7 +1,5 @@
 
-import { IUserState } from './reducer';
+import { IUserState } from './models';
 
 
-export const getUser = (state: IUserState) => {
-  return state;
-};
+export const getUser = (state: IUserState) => state;

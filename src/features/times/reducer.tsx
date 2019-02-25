@@ -9,6 +9,7 @@ import { ITimesState } from './models';
 
 export type ITimesAction = ActionType<typeof timesActions>;
 
+
 // Test data
 const chance = new Chance();
 const data = [];
@@ -24,12 +25,12 @@ for (let i = 0; i < 10; i++) {
 }
 // End Test data
 
-const initialState = {
+const initialState: ITimesState = {
   data: data, // return []
   isLoading: true,
 };
 
-export default (state: ITimesState = initialState, action: ITimesAction) => {
+const reducer = (state = initialState, action: ITimesAction): ITimesState => {
   switch (action.type) {
     case ADD:
       return {
@@ -52,3 +53,6 @@ export default (state: ITimesState = initialState, action: ITimesAction) => {
       return state;
   }
 };
+
+
+export default reducer;

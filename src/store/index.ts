@@ -23,3 +23,5 @@ export const configureStore = (preloadedState?: any) => {
 
   return store;
 };
+
+export type RootState = ReturnType<ReturnType<typeof createRootReducer>>;

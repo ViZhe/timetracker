@@ -8,4 +8,5 @@ interface ISetData {
   name: string;
 }
 
+
 export const setData = (userData: ISetData) => action(SET_DATA, userData);

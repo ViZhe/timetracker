@@ -1,5 +1,5 @@
 
-import { connectRouter, RouterState } from 'connected-react-router';
+import { connectRouter } from 'connected-react-router';
 import { History } from 'history';
 import { combineReducers } from 'redux';
 

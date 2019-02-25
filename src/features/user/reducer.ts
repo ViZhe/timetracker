@@ -3,18 +3,17 @@ import { ActionType } from 'typesafe-actions';
 
 import * as userActions from './actions';
 import { SET_DATA } from './constants';
+import { IUserState } from './models';
 
 
 export type UserAction = ActionType<typeof userActions>;
-export interface IUserState {
-  name: string | null;
-}
 
-const initialState = {
+
+const initialState: IUserState = {
   name: null,
 };
 
-export default (state: IUserState = initialState, action: UserAction) => {
+const reducer = (state = initialState, action: UserAction): IUserState => {
   switch (action.type) {
     case SET_DATA:
       return { ...state, ...action.payload };
@@ -23,3 +22,6 @@ export default (state: IUserState = initialState, action: UserAction) => {
       return state;
   }
 };
+
+
+export default reducer;
