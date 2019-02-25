@@ -63,7 +63,7 @@ class Time extends Component<ITimeProps, ITimeState> {
     const { selectedKeys } = this.state;
     const rowSelection = {
       getCheckboxProps: (record: any) => ({
-        disabled: record.disabled, // Column configuration not to be checked
+        disabled: record.disabled,
       }),
       onChange: (selectedRowKeys: any) => {
         this.setState({ selectedKeys: selectedRowKeys });
