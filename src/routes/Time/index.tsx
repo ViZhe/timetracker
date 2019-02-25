@@ -1,5 +1,5 @@
 
-import { Button, Card, Layout, Table, Tag } from 'antd';
+import { Button, Card, Layout, message, Popconfirm, Table, Tag } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -52,6 +52,7 @@ class Time extends Component<ITimeProps, ITimeState> {
   onClickRemove = () => {
     this.props.removeTimeEntry(this.state.selectedKeys);
     this.setState({ selectedKeys: [] });
+    message.success('Removed');
   }
 
   render() {
@@ -77,7 +78,15 @@ class Time extends Component<ITimeProps, ITimeState> {
                   <> time {selectedKeys.length > 1 ? 'entries' : 'entry'} selected</>
                 </span>
                 <Button disabled={true}>Explode World</Button>
-                <Button type="danger" icon="delete" onClick={this.onClickRemove}>Delete </Button>
+                <Popconfirm
+                  placement="bottom"
+                  title="Are you sure delete selected entries?"
+                  okText="Yes"
+                  cancelText="No"
+                  onConfirm={this.onClickRemove}
+                >
+                  <Button type="danger" icon="delete">Delete </Button>
+                </Popconfirm>
               </>
             )}
           </div>
