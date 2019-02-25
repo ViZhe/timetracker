@@ -1,6 +1,5 @@
 
 import { Button, Card, Layout, Table, Tag } from 'antd';
-import Chance from 'chance';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -21,7 +20,6 @@ interface ITimeState {
 
 
 const { Content } = Layout;
-const chance = new Chance();
 
 const mapStateToProps = (state: any) => ({
   times: timesSelectors.getTimes(state.times),
@@ -45,16 +43,8 @@ class Time extends Component<ITimeProps, ITimeState> {
     selectedKeys: [],
   };
 
-  componentDidMount() {
-    for (let i = 0; i < 10; i++) {
-      this.props.addTimeEntry({
-        description: chance.sentence({ words: 5 }),
-        duration: `${chance.hour({ twentyfour: true })}h ${chance.minute()} min`,
-        key: chance.guid(),
-        tags: [chance.word(), `tag ${i}`],
-        timeEnd: `${chance.hour()}:${chance.minute()}`,
-        timeStart: `${chance.hour()}:${chance.minute()}`,
-      });
+  onSelectChange = (selectedRowKeys: any) => {
+    this.setState({ selectedKeys: selectedRowKeys });
     }
   }
 
@@ -62,12 +52,8 @@ class Time extends Component<ITimeProps, ITimeState> {
     const { times } = this.props;
     const { selectedKeys } = this.state;
     const rowSelection = {
-      getCheckboxProps: (record: any) => ({
-        disabled: record.disabled,
-      }),
-      onChange: (selectedRowKeys: any) => {
-        this.setState({ selectedKeys: selectedRowKeys });
-      },
+      onChange: this.onSelectChange,
+      selectedRowKeys: selectedKeys,
     };
 
     return (
