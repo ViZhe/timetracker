@@ -3,7 +3,7 @@ import Chance from 'chance';
 import { ActionType } from 'typesafe-actions';
 
 import * as timesActions from './actions';
-import { ADD } from './constants';
+import { ADD, REMOVE } from './constants';
 import { ITimesState } from './models';
 
 
@@ -37,6 +37,14 @@ export default (state: ITimesState = initialState, action: ITimesAction) => {
         data: [
           ...state.data,
           action.payload,
+        ],
+      };
+
+    case REMOVE:
+      return {
+        ...state,
+        data: [
+          ...state.data.filter(entry => !action.payload.includes(entry.key)),
         ],
       };
 

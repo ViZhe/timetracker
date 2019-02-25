@@ -11,6 +11,7 @@ import styles from './index.module.css';
 interface ITimeProps {
   times: ITimesState;
   addTimeEntry: (data: ITimesData) => void;
+  removeTimeEntry: (data: string[]) => void;
 }
 
 interface ITimeState {
@@ -26,6 +27,7 @@ const mapStateToProps = (state: any) => ({
 });
 const mapDispatchToProps = {
   addTimeEntry: timesActions.add,
+  removeTimeEntry: timesActions.remove,
 };
 
 const renderTags = (tags: [string]) => (
@@ -45,7 +47,11 @@ class Time extends Component<ITimeProps, ITimeState> {
 
   onSelectChange = (selectedRowKeys: any) => {
     this.setState({ selectedKeys: selectedRowKeys });
-    }
+  }
+
+  onClickRemove = () => {
+    this.props.removeTimeEntry(this.state.selectedKeys);
+    this.setState({ selectedKeys: [] });
   }
 
   render() {
@@ -71,7 +77,7 @@ class Time extends Component<ITimeProps, ITimeState> {
                   <> time {selectedKeys.length > 1 ? 'entries' : 'entry'} selected</>
                 </span>
                 <Button disabled={true}>Explode World</Button>
-                <Button type="danger" icon="delete">Delete </Button>
+                <Button type="danger" icon="delete" onClick={this.onClickRemove}>Delete </Button>
               </>
             )}
           </div>
