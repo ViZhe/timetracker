@@ -1,2 +1,2 @@
 
-export const ADD = 'user/ADD';
+export const ADD = 'times/ADD';
