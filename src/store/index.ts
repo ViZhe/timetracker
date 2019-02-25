@@ -9,7 +9,7 @@ import { createRootReducer } from './reducers';
 
 export const history = createBrowserHistory();
 
-export const configureStore = (preloadedState?: any) => {
+export const configureStore = (preloadedState = {}) => {
   const store = createStore(
     createRootReducer(history),
     preloadedState,
