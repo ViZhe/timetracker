@@ -4,8 +4,8 @@ import { FormComponentProps } from 'antd/lib/form';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { userActions, userSelectors } from '../../../features/user';
 import { RootState } from '../../../store';
+import { userActions, userSelectors } from '../../../store/user';
 import styles from './index.module.css';
 
 

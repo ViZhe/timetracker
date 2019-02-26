@@ -3,9 +3,9 @@ import { Button, Card, Layout, message, Popconfirm, Table, Tag } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { timesActions, timesSelectors } from '../../features/times';
-import { ITimesData, ITimesState } from '../../features/times/models';
 import { RootState } from '../../store';
+import { timesActions, timesSelectors } from '../../store/times';
+import { ITimesData, ITimesState } from '../../store/times/models';
 import styles from './index.module.css';
 
 
