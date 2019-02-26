@@ -1,8 +1,9 @@
 
-import { Button, Card, Layout, message, Popconfirm, Table, Tag } from 'antd';
+import { Button, Card, Layout, message, Modal, Popconfirm, Table, Tag } from 'antd';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import CreateTimeEntryForm from '../../components/CreateTimeEntryForm';
 import { RootState } from '../../store';
 import { timesActions, timesSelectors } from '../../store/times';
 import { ITimesData, ITimesState } from '../../store/times/models';
@@ -16,6 +17,7 @@ interface ITimeProps {
 }
 
 interface ITimeState {
+  isVisibleModal: boolean;
   loading: boolean;
   selectedKeys: any[];
 }
@@ -42,6 +44,7 @@ const renderTime = (text: string, record: ITimesData) => (
 
 class Time extends Component<ITimeProps, ITimeState> {
   readonly state:ITimeState = {
+    isVisibleModal: false,
     loading: false,
     selectedKeys: [],
   };
@@ -54,6 +57,14 @@ class Time extends Component<ITimeProps, ITimeState> {
     this.props.removeTimeEntry(this.state.selectedKeys);
     this.setState({ selectedKeys: [] });
     message.success('Removed');
+  }
+
+  showModal = () => {
+    this.setState({ isVisibleModal: true });
+  }
+
+  hideModal = () => {
+    this.setState({ isVisibleModal: false });
   }
 
   render() {
@@ -69,7 +80,7 @@ class Time extends Component<ITimeProps, ITimeState> {
         <Card bordered={false}>
           <div className={styles.tableListOperator}>
             {selectedKeys.length === 0 && (
-              <Button icon="plus" type="primary">Add time entry</Button>
+              <Button icon="plus" type="primary" onClick={this.showModal}>Add time entry</Button>
             ) || (
               <>
                 <span
@@ -122,6 +133,17 @@ class Time extends Component<ITimeProps, ITimeState> {
             />
           </Table>
         </Card>
+        <Modal
+          title="Create a new time entry"
+          visible={this.state.isVisibleModal}
+          onOk={this.hideModal}
+          onCancel={this.hideModal}
+          footer={null}
+        >
+          <CreateTimeEntryForm
+            hideModal={this.hideModal}
+          />
+        </Modal>
       </Content>
     );
   }
