@@ -1,5 +1,6 @@
 
 import { Button, Card, Layout, message, Modal, Popconfirm, Table, Tag } from 'antd';
+import moment from 'moment';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -38,9 +39,13 @@ const renderTags = (tags: [string]) => (
     <Tag key={tag}>{tag.toUpperCase()}</Tag>
   ))
 );
-const renderTime = (text: string, record: ITimesData) => (
-  `${record.timeStart} - ${record.timeEnd}`
-);
+const renderTime = (text: string, record: ITimesData) => {
+  const startTime = moment(record.timeStart).format('H:m');
+  const timeEnd = moment(record.timeEnd).format('H:m');
+
+  return `${startTime} - ${timeEnd}`;
+};
+const renderDuration = (text: string) => `${text} h`;
 
 class Time extends Component<ITimeProps, ITimeState> {
   readonly state:ITimeState = {
@@ -130,6 +135,7 @@ class Time extends Component<ITimeProps, ITimeState> {
               dataIndex="duration"
               className={styles.columnDuration}
               width={120}
+              render={renderDuration}
             />
           </Table>
         </Card>
