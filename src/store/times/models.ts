@@ -4,8 +4,8 @@ export interface ITimesData {
   duration: string;
   key: string;
   tags: string[];
-  timeStart: string;
-  timeEnd: string | null;
+  timeStart: Date | string;
+  timeEnd: Date | string;
 }
 
 export interface ITimesState {

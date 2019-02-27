@@ -1,5 +1,6 @@
 
 import Chance from 'chance';
+import moment from 'moment';
 import { ActionType } from 'typesafe-actions';
 
 import * as timesActions from './actions';
@@ -14,13 +15,17 @@ export type ITimesAction = ActionType<typeof timesActions>;
 const chance = new Chance();
 const data = [];
 for (let i = 0; i < 10; i++) {
+  const timeEnd = chance.date({ string: false, year: 2000, month: 0, day: 0 });
+  const timeStart = chance.date({ string: false, year: 2000, month: 0, day: 0 });
+  const duration = moment(timeEnd).diff(timeStart, 'hours', true).toFixed(2);
+
   data.push({
     description: chance.sentence({ words: 5 }),
-    duration: `${chance.hour({ twentyfour: true })}h ${chance.minute()} min`,
+    duration,
     key: chance.guid(),
     tags: [chance.word(), `tag ${i}`],
-    timeEnd: `${chance.hour()}:${chance.minute()}`,
-    timeStart: `${chance.hour()}:${chance.minute()}`,
+    timeEnd,
+    timeStart,
   });
 }
 // End Test data
