@@ -64,6 +64,23 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
     });
   };
 
+  const onChangeTimeEnd = (time: moment.Moment) => {
+    let timeStart = form.getFieldValue('timeStart');
+
+    if (!timeStart || time.isSameOrBefore(timeStart)) {
+      timeStart = moment(time).subtract(5, 'minutes');
+
+      form.setFieldsValue({
+        timeStart,
+      });
+    }
+
+    const duration = moment(time).diff(timeStart, 'hours', true);
+    form.setFieldsValue({
+      duration: `${duration.toFixed(2)} h`,
+    });
+  };
+
   return (
     <Form layout="vertical" onSubmit={handleSubmit}>
       <Form.Item label="Description">
@@ -87,7 +104,7 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
           {getFieldDecorator('timeEnd', {
             rules: [{ required: true, message: 'Please input the timeEnd of collection!' }],
           })(
-            <TimePicker format="HH:mm" />,
+            <TimePicker format="HH:mm" onChange={onChangeTimeEnd} />,
           )}
         </Form.Item>
         <Form.Item label="Duration">
