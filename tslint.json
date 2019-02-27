@@ -25,6 +25,7 @@
       "allow-pascal-case",
       "allow-leading-underscore"
     ],
-    "jsx-no-multiline-js": false
+    "jsx-no-multiline-js": false,
+    "object-shorthand-properties-first": false
   }
 }
