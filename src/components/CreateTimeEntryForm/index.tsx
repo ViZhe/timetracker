@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { RootState } from '../../store';
 import { timesActions } from '../../store/times';
 import { ITimesData } from '../../store/times/models';
+import styles from './index.module.css';
 
 import Chance from 'chance';
 const chance = new Chance();

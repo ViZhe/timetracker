@@ -1,0 +1,10 @@
+
+.timeRow {
+  margin-bottom: 0;
+}
+
+.timeRow > :global(.ant-form-item-control-wrapper > .ant-form-item-control > .ant-form-item-children) {
+  display: grid;
+  grid-gap: 1rem;
+  grid-auto-flow: column;
+}
