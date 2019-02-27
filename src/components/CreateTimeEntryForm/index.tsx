@@ -2,6 +2,7 @@
 import { Button, Form, Input, message, TimePicker } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import Chance from 'chance';
+import moment from 'moment';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -46,6 +47,23 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
     });
   };
 
+  const onChangeTimeStart = (time: moment.Moment) => {
+    let timeEnd = form.getFieldValue('timeEnd');
+
+    if (!timeEnd || time.isSameOrAfter(timeEnd)) {
+      timeEnd = moment(time).add(5, 'minutes');
+
+      form.setFieldsValue({
+        timeEnd,
+      });
+    }
+
+    const duration = moment(timeEnd).diff(time, 'hours', true);
+    form.setFieldsValue({
+      duration: `${duration.toFixed(2)} h`,
+    });
+  };
+
   return (
     <Form layout="vertical" onSubmit={handleSubmit}>
       <Form.Item label="Description">
@@ -62,7 +80,7 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
           {getFieldDecorator('timeStart', {
             rules: [{ required: true, message: 'Please input the timeStart of collection!' }],
           })(
-            <TimePicker format="HH:mm" />,
+            <TimePicker format="HH:mm" onChange={onChangeTimeStart} />,
           )}
         </Form.Item>
         <Form.Item label="TimeEnd">
