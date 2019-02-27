@@ -1,5 +1,5 @@
 
-import { Button, Form, Input, message } from 'antd';
+import { Button, Form, Input, message, TimePicker } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
 import Chance from 'chance';
 import React from 'react';
@@ -52,29 +52,33 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
         {getFieldDecorator('description', {
           rules: [{ required: true, message: 'Please input the description of collection!' }],
         })(
-          <Input />,
+          <Input autoFocus={true} />,
         )}
       </Form.Item>
-      <Form.Item label="Duration">
-        {getFieldDecorator('duration', {
-          rules: [{ required: true, message: 'Please input the duration of collection!' }],
-        })(
-          <Input />,
-        )}
-      </Form.Item>
-      <Form.Item label="TimeStart">
-        {getFieldDecorator('timeStart', {
-          rules: [{ required: true, message: 'Please input the timeStart of collection!' }],
-        })(
-          <Input />,
-        )}
-      </Form.Item>
-      <Form.Item label="TimeEnd">
-        {getFieldDecorator('timeEnd', {
-          rules: [{ required: true, message: 'Please input the timeEnd of collection!' }],
-        })(
-          <Input />,
-        )}
+      <Form.Item
+        className={styles.timeRow}
+      >
+        <Form.Item label="TimeStart">
+          {getFieldDecorator('timeStart', {
+            rules: [{ required: true, message: 'Please input the timeStart of collection!' }],
+          })(
+            <TimePicker format="HH:mm" />,
+          )}
+        </Form.Item>
+        <Form.Item label="TimeEnd">
+          {getFieldDecorator('timeEnd', {
+            rules: [{ required: true, message: 'Please input the timeEnd of collection!' }],
+          })(
+            <TimePicker format="HH:mm" />,
+          )}
+        </Form.Item>
+        <Form.Item label="Duration">
+          {getFieldDecorator('duration', {
+            rules: [{ required: true, message: 'Please input the duration of collection!' }],
+          })(
+            <Input />,
+          )}
+        </Form.Item>
       </Form.Item>
       <Form.Item>
         <Button htmlType="submit" type="primary">Create</Button>
