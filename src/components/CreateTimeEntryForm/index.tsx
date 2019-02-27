@@ -1,6 +1,7 @@
 
 import { Button, Form, Input, message } from 'antd';
 import { FormComponentProps } from 'antd/lib/form';
+import Chance from 'chance';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -9,8 +10,6 @@ import { timesActions } from '../../store/times';
 import { ITimesData } from '../../store/times/models';
 import styles from './index.module.css';
 
-import Chance from 'chance';
-const chance = new Chance();
 
 interface IProps extends FormComponentProps {
   hideModal: () => void;
@@ -18,11 +17,12 @@ interface IProps extends FormComponentProps {
 }
 
 
+const chance = new Chance();
+
 const mapStateToProps = (state: RootState) => ({});
 const mapDispatchToProps = {
   addTimeEntry: timesActions.add,
 };
-
 
 const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) => {
   const { getFieldDecorator } = form;
