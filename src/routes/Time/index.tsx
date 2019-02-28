@@ -40,8 +40,8 @@ const renderTags = (tags: [string]) => (
   ))
 );
 const renderTime = (text: string, record: ITimesData) => {
-  const startTime = moment(record.timeStart).format('H:m');
-  const timeEnd = moment(record.timeEnd).format('H:m');
+  const startTime = moment(record.timeStart).format('H:mm');
+  const timeEnd = moment(record.timeEnd).format('H:mm');
 
   return `${startTime} - ${timeEnd}`;
 };
