@@ -126,6 +126,7 @@ class Time extends Component<ITimeProps, ITimeState> {
             <Table.Column
               key="time"
               dataIndex="time"
+              title="Range"
               className={styles.columnTime}
               width={130}
               render={renderTime}
@@ -133,6 +134,7 @@ class Time extends Component<ITimeProps, ITimeState> {
             <Table.Column
               key="duration"
               dataIndex="duration"
+              title="Time"
               className={styles.columnDuration}
               width={120}
               render={renderDuration}

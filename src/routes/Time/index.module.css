@@ -17,6 +17,8 @@
 }
 
 .columnTime,
-.columnDuration {
+.columnDuration,
+.columnTime div,
+.columnDuration div {
   text-align: right;
 }
