@@ -14,9 +14,26 @@ export type ITimesAction = ActionType<typeof timesActions>;
 // Test data
 const chance = new Chance();
 const data = [];
+
+const year = moment().year();
+const month = moment().month();
+const day = moment().date();
+const dayPrev = moment().subtract(1, 'days').date();
+
 for (let i = 0; i < 10; i++) {
-  const timeEnd = chance.date({ string: false, year: 2000, month: 0, day: 0 });
-  const timeStart = chance.date({ string: false, year: 2000, month: 0, day: 0 });
+  const rand = chance.bool();
+  const timeEnd = chance.date({
+    day: rand ? day : dayPrev,
+    month,
+    string: false,
+    year,
+  });
+  const timeStart = chance.date({
+    day: rand ? day : dayPrev,
+    month,
+    string: false,
+    year,
+  });
   const duration = moment(timeEnd).diff(timeStart, 'hours', true).toFixed(2);
 
   data.push({
