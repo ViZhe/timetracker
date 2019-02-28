@@ -80,6 +80,10 @@ class Time extends Component<ITimeProps, ITimeState> {
       selectedRowKeys: selectedKeys,
     };
 
+    times.data.sort((a: ITimesData, b: ITimesData) => (
+      moment(a.timeStart).diff(b.timeStart)
+    ));
+
     return (
       <Content className={styles.wrapper}>
         <Card bordered={false}>
