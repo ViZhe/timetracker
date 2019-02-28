@@ -1,5 +1,5 @@
 
-import { Button, Card, Layout, message, Modal, Popconfirm, Table, Tag } from 'antd';
+import { Button, Card, DatePicker, Layout, message, Modal, Popconfirm, Table, Tag } from 'antd';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -18,6 +18,7 @@ interface ITimeProps {
 }
 
 interface ITimeState {
+  currentDate: moment.Moment;
   isVisibleModal: boolean;
   loading: boolean;
   selectedKeys: any[];
@@ -49,10 +50,17 @@ const renderDuration = (text: string) => `${text} h`;
 
 class Time extends Component<ITimeProps, ITimeState> {
   readonly state:ITimeState = {
+    currentDate: moment(),
     isVisibleModal: false,
     loading: false,
     selectedKeys: [],
   };
+
+  onChangeDate = (data: moment.Moment) => {
+    this.setState({
+      currentDate: data,
+    });
+  }
 
   onSelectChange = (selectedRowKeys: any) => {
     this.setState({ selectedKeys: selectedRowKeys });
@@ -80,13 +88,19 @@ class Time extends Component<ITimeProps, ITimeState> {
       selectedRowKeys: selectedKeys,
     };
 
-    times.data.sort((a: ITimesData, b: ITimesData) => (
+    const timesData = times.data.filter((item: ITimesData) => (
+      moment(item.timeStart).isSame(this.state.currentDate, 'day')
+    ));
+
+    timesData.sort((a: ITimesData, b: ITimesData) => (
       moment(a.timeStart).diff(b.timeStart)
     ));
 
     return (
       <Content className={styles.wrapper}>
         <Card bordered={false}>
+          <DatePicker value={this.state.currentDate} onChange={this.onChangeDate} />
+          <br /><br />
           <div className={styles.tableListOperator}>
             {selectedKeys.length === 0 && (
               <Button icon="plus" type="primary" onClick={this.showModal}>Add time entry</Button>
@@ -113,7 +127,7 @@ class Time extends Component<ITimeProps, ITimeState> {
           </div>
           <Table
             rowSelection={rowSelection}
-            dataSource={times.data}
+            dataSource={timesData}
             pagination={false}
           >
             <Table.Column
