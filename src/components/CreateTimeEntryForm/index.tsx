@@ -77,7 +77,7 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
 
     const duration = moment(time).diff(timeStart, 'hours', true);
     form.setFieldsValue({
-      duration: `${duration.toFixed(2)} h`,
+      duration: duration.toFixed(2),
     });
   };
 
