@@ -62,6 +62,21 @@ class Time extends Component<ITimeProps, ITimeState> {
     });
   }
 
+  onClickBtnDateLeft = () => {
+    const date = this.state.currentDate.subtract(1, 'days');
+
+    this.setState({
+      currentDate: date,
+    });
+  }
+  onClickBtnDateRight = () => {
+    const date = this.state.currentDate.add(1, 'days');
+
+    this.setState({
+      currentDate: date,
+    });
+  }
+
   onSelectChange = (selectedRowKeys: any) => {
     this.setState({ selectedKeys: selectedRowKeys });
   }
@@ -99,8 +114,16 @@ class Time extends Component<ITimeProps, ITimeState> {
     return (
       <Content className={styles.wrapper}>
         <Card bordered={false}>
-          <DatePicker value={this.state.currentDate} onChange={this.onChangeDate} />
-          <br /><br />
+          <div className={styles.dateControl}>
+            <Button icon="left" onClick={this.onClickBtnDateLeft} />
+            <DatePicker
+              allowClear={false}
+              value={this.state.currentDate}
+              onChange={this.onChangeDate}
+            />
+            <Button icon="right" onClick={this.onClickBtnDateRight} />
+          </div>
+
           <div className={styles.tableListOperator}>
             {selectedKeys.length === 0 && (
               <Button icon="plus" type="primary" onClick={this.showModal}>Add time entry</Button>

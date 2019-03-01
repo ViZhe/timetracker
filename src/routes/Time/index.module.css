@@ -4,6 +4,15 @@
   min-Height: 280px
 }
 
+.dateControl {
+  margin-bottom: 2rem;
+}
+
+.dateControl :global(.ant-calendar-picker) {
+  margin-right: .5rem;
+  margin-left: .5rem;
+}
+
 .tableListOperator {
   margin-bottom: 1rem;
 }
