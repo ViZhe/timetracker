@@ -50,7 +50,7 @@ const renderDuration = (text: string) => `${text} h`;
 
 class Time extends Component<ITimeProps, ITimeState> {
   readonly state:ITimeState = {
-    currentDate: moment(),
+    currentDate: moment().startOf('day'),
     isVisibleModal: false,
     loading: false,
     selectedKeys: [],
@@ -58,7 +58,7 @@ class Time extends Component<ITimeProps, ITimeState> {
 
   onChangeDate = (date: moment.Moment) => {
     this.setState({
-      currentDate: date,
+      currentDate: date.startOf('day'),
     });
   }
 
@@ -191,6 +191,7 @@ class Time extends Component<ITimeProps, ITimeState> {
         >
           <CreateTimeEntryForm
             hideModal={this.hideModal}
+            defaultStartTime={this.state.currentDate}
           />
         </Modal>
       </Content>

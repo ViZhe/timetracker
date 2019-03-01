@@ -15,6 +15,7 @@ import styles from './index.module.css';
 interface IProps extends FormComponentProps {
   hideModal: () => void;
   addTimeEntry: (data: ITimesData) => void;
+  defaultStartTime: moment.Moment;
 }
 
 
@@ -25,7 +26,7 @@ const mapDispatchToProps = {
   addTimeEntry: timesActions.add,
 };
 
-const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) => {
+const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, defaultStartTime, addTimeEntry }) => {
   const { getFieldDecorator } = form;
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLElement>) => {
@@ -49,6 +50,8 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
 
   const onChangeTimeStart = (time: moment.Moment) => {
     let timeEnd = form.getFieldValue('timeEnd');
+    const diffDays = time.diff(defaultStartTime, 'days');
+    time.subtract(diffDays, 'days');
 
     if (!timeEnd || time.isSameOrAfter(timeEnd)) {
       timeEnd = moment(time).add(5, 'minutes');
@@ -66,6 +69,8 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
 
   const onChangeTimeEnd = (time: moment.Moment) => {
     let timeStart = form.getFieldValue('timeStart');
+    const diffDays = time.diff(defaultStartTime, 'days');
+    time.subtract(diffDays, 'days');
 
     if (!timeStart || time.isSameOrBefore(timeStart)) {
       timeStart = moment(time).subtract(5, 'minutes');
@@ -97,14 +102,14 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, addTimeEntry }) =>
           {getFieldDecorator('timeStart', {
             rules: [{ required: true, message: 'Please input the timeStart of collection!' }],
           })(
-            <TimePicker format="HH:mm" onChange={onChangeTimeStart} />,
+            <TimePicker allowClear={false} format="HH:mm" onChange={onChangeTimeStart} />,
           )}
         </Form.Item>
         <Form.Item label="TimeEnd">
           {getFieldDecorator('timeEnd', {
             rules: [{ required: true, message: 'Please input the timeEnd of collection!' }],
           })(
-            <TimePicker format="HH:mm" onChange={onChangeTimeEnd} />,
+            <TimePicker allowClear={false} format="HH:mm" onChange={onChangeTimeEnd} />,
           )}
         </Form.Item>
         <Form.Item label="Duration">
