@@ -56,9 +56,9 @@ class Time extends Component<ITimeProps, ITimeState> {
     selectedKeys: [],
   };
 
-  onChangeDate = (data: moment.Moment) => {
+  onChangeDate = (date: moment.Moment) => {
     this.setState({
-      currentDate: data,
+      currentDate: date,
     });
   }
 
