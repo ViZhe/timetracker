@@ -7,14 +7,7 @@
   ],
   "rules": {
     "import-blacklist": true,
-    "import-name": [
-      true,
-      {
-        "indexModuleCss": "styles",
-        "react": "React",
-        "chance": "Chance"
-      }
-    ],
+    "import-name": false,
     "member-access": false,
     "no-consecutive-blank-lines": [true, 2],
     "no-submodule-imports": [true, "antd"],
@@ -26,6 +19,7 @@
       "allow-leading-underscore"
     ],
     "jsx-no-multiline-js": false,
-    "object-shorthand-properties-first": false
+    "object-shorthand-properties-first": false,
+    "no-implicit-dependencies": [true, "dev"]
   }
 }
