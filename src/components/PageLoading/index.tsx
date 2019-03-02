@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './index.module.css';
 
 
-const PageLoading = () => (
+const PageLoading: React.FC = () => (
   <div className={styles.wrapper}>
     <Spin size="large" />
   </div>

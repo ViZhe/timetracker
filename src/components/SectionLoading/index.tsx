@@ -5,7 +5,7 @@ import React from 'react';
 import styles from './index.module.css';
 
 
-const SectionLoading = () => (
+const SectionLoading: React.FC = () => (
   <div className={styles.wrapper}>
     <Spin />
   </div>
