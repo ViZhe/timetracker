@@ -90,7 +90,7 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, defaultStartTime, 
     <Form layout="vertical" onSubmit={handleSubmit}>
       <Form.Item label="Description">
         {getFieldDecorator('description', {
-          rules: [{ required: true, message: 'Please input the description of collection!' }],
+          rules: [{ required: true, message: 'Please input the description of time entry!' }],
         })(
           <Input autoFocus={true} />,
         )}
@@ -100,23 +100,21 @@ const CreateTimeEntry: React.FC<IProps> = ({ form, hideModal, defaultStartTime, 
       >
         <Form.Item label="TimeStart">
           {getFieldDecorator('timeStart', {
-            rules: [{ required: true, message: 'Please input the timeStart of collection!' }],
+            rules: [{ required: true, message: 'Field required!' }],
           })(
             <TimePicker allowClear={false} format="HH:mm" onChange={onChangeTimeStart} />,
           )}
         </Form.Item>
         <Form.Item label="TimeEnd">
           {getFieldDecorator('timeEnd', {
-            rules: [{ required: true, message: 'Please input the timeEnd of collection!' }],
+            rules: [{ required: true, message: 'Field required!' }],
           })(
             <TimePicker allowClear={false} format="HH:mm" onChange={onChangeTimeEnd} />,
           )}
         </Form.Item>
         <Form.Item label="Duration">
-          {getFieldDecorator('duration', {
-            rules: [{ required: true, message: 'Please input the duration of collection!' }],
-          })(
-            <Input />,
+          {getFieldDecorator('duration')(
+            <Input readOnly={true} />,
           )}
         </Form.Item>
       </Form.Item>
