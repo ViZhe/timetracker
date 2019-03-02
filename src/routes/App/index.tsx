@@ -9,6 +9,7 @@ import SectionLoading from '../../components/SectionLoading';
 
 const Time = lazy(() => import('../Time'));
 const Reports = lazy(() => import('../Reports'));
+const Projects = lazy(() => import('../Projects'));
 const Settings = lazy(() => import('../Settings'));
 
 const App: React.FC = () => (
@@ -17,6 +18,7 @@ const App: React.FC = () => (
       <Switch>
         <Route path="/time" component={Time} exact={true} />
         <Route path="/reports" component={Reports} />
+        <Route path="/projects" component={Projects} />
         <Route path="/settings" component={Settings} />
         <Route><Empty style={{ marginTop: '10rem' }} description={'Page not found'} /></Route>
       </Switch>

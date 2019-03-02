@@ -43,6 +43,12 @@ class SiderMenu extends Component<IProps, {}> {
               <span>Reports</span>
             </Link>
           </Menu.Item>
+          <Menu.Item key="projects">
+            <Link to="/projects">
+              <Icon type="project" />
+              <span>Projects</span>
+            </Link>
+          </Menu.Item>
           <Menu.Item key="settings">
             <Link to="/settings">
               <Icon type="setting" />
