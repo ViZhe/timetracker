@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SectionLoading /> should match snapshot 1`] = `
+<div
+  className="wrapper"
+>
+  <Spin
+    size="default"
+    spinning={true}
+    wrapperClassName=""
+  />
+</div>
+`;
