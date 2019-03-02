@@ -24,4 +24,4 @@ const GlobalHeader: React.FC<IProps> = ({ collapsed, onClickTrigger }) => (
 );
 
 
-export default GlobalHeader;
+export default React.memo(GlobalHeader);

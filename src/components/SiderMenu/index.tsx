@@ -63,4 +63,4 @@ const SiderMenu: React.FC<IProps> = ({ collapsed, onCollapse }) => (
 );
 
 
-export default SiderMenu;
+export default React.memo(SiderMenu);
