@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppLayout /> <AppLayout /> children should match snapshot 1`] = `
+<Adapter>
+  <Component
+    collapsed={false}
+    onCollapse={[Function]}
+  />
+  <Adapter>
+    <Component
+      collapsed={false}
+      onClickTrigger={[Function]}
+    />
+    <div>
+      test
+    </div>
+  </Adapter>
+</Adapter>
+`;
+
+exports[`<AppLayout /> <AppLayout /> initial should match snapshot 1`] = `
+<Adapter>
+  <Component
+    collapsed={false}
+    onCollapse={[Function]}
+  />
+  <Adapter>
+    <Component
+      collapsed={false}
+      onClickTrigger={[Function]}
+    />
+  </Adapter>
+</Adapter>
+`;
