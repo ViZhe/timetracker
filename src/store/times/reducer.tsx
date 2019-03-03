@@ -1,6 +1,4 @@
 
-import Chance from 'chance';
-import moment from 'moment';
 import { ActionType } from 'typesafe-actions';
 
 import * as timesActions from './actions';
@@ -11,42 +9,8 @@ import { ITimesState } from './models';
 export type ITimesAction = ActionType<typeof timesActions>;
 
 
-// Test data
-const chance = new Chance();
-const data = [];
-
-const currentDate = moment();
-const prevDate = moment().subtract(1, 'days');
-
-for (let i = 0; i < 10; i++) {
-  const rand = chance.bool();
-  const timeEnd = chance.date({
-    day: rand ? currentDate.date() : prevDate.date(),
-    month: rand ? currentDate.month() : prevDate.month(),
-    string: false,
-    year: rand ? currentDate.year() : prevDate.year(),
-  });
-  const timeStart = chance.date({
-    day: rand ? currentDate.date() : prevDate.date(),
-    month: rand ? currentDate.month() : prevDate.month(),
-    string: false,
-    year: rand ? currentDate.year() : prevDate.year(),
-  });
-  const duration = moment(timeEnd).diff(timeStart, 'hours', true).toFixed(2);
-
-  data.push({
-    description: chance.sentence({ words: 5 }),
-    duration,
-    key: chance.guid(),
-    tags: [chance.word(), `tag ${i}`],
-    timeEnd,
-    timeStart,
-  });
-}
-// End Test data
-
 const initialState: ITimesState = {
-  data: data, // return []
+  data: [],
   isLoading: true,
 };
 

@@ -1,5 +1,6 @@
 
 import { Button, Card, DatePicker, Layout, message, Modal, Popconfirm, Table, Tag } from 'antd';
+import Chance from 'chance';
 import moment from 'moment';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -25,6 +26,7 @@ interface ITimeState {
 }
 
 
+const chance = new Chance();
 const { Content } = Layout;
 
 const mapStateToProps = (state: RootState) => ({
@@ -56,7 +58,42 @@ class Time extends Component<ITimeProps, ITimeState> {
     selectedKeys: [],
   };
 
+  removeAndGenerateData = (date: moment.Moment) => {
+    const keys = this.props.times.data.map(({ key }: ITimesData) => key);
+    this.props.removeTimeEntry(keys);
+
+    // tslint:disable-next-line no-increment-decrement
+    for (let i = 0; i < chance.natural({ max: 11 }); i++) {
+      const timeEnd = chance.date({
+        day: date.date(),
+        month: date.month(),
+        string: false,
+        year: date.year(),
+      });
+      const timeStart = chance.date({
+        day: date.date(),
+        month: date.month(),
+        string: false,
+        year: date.year(),
+      });
+      const duration = moment(timeEnd).diff(timeStart, 'hours', true).toFixed(2);
+
+      this.props.addTimeEntry({
+        description: chance.sentence({ words: 5 }),
+        duration,
+        key: chance.guid(),
+        tags: [chance.word(), `tag ${i}`],
+        timeEnd,
+        timeStart,
+      });
+    }
+  }
+  componentWillMount() {
+    this.removeAndGenerateData(this.state.currentDate);
+  }
+
   onChangeDate = (date: moment.Moment) => {
+    this.removeAndGenerateData(date);
     this.setState({
       currentDate: date.startOf('day'),
     });
@@ -65,6 +102,7 @@ class Time extends Component<ITimeProps, ITimeState> {
   onClickBtnDateLeft = () => {
     const date = this.state.currentDate.subtract(1, 'days');
 
+    this.removeAndGenerateData(date);
     this.setState({
       currentDate: date,
     });
@@ -72,6 +110,7 @@ class Time extends Component<ITimeProps, ITimeState> {
   onClickBtnDateRight = () => {
     const date = this.state.currentDate.add(1, 'days');
 
+    this.removeAndGenerateData(date);
     this.setState({
       currentDate: date,
     });
