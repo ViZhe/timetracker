@@ -116,7 +116,7 @@ class Time extends Component<ITimeProps, ITimeState> {
     });
   }
 
-  onSelectChange = (selectedRowKeys: any) => {
+  onSelectChange = (selectedRowKeys: string[] | number[]) => {
     this.setState({ selectedKeys: selectedRowKeys });
   }
 
