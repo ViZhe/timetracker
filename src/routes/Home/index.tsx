@@ -20,7 +20,7 @@ const mapStateToProps = (state: RootState) => ({
   user: userSelectors.getUser(state.user),
 });
 
-const Home: React.FC<IBaseProps> = ({ user }) => (
+export const Home: React.FC<IBaseProps> = ({ user }) => (
   <div className={styles.box}>
     <div className={styles.header}>Hello, {user.name || 'anonymous'}!</div>
     <div className={styles.body}>Let's start tracking you time together &#59;&#41;</div>

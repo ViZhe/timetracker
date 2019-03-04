@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Home /> <Home /> initial should match snapshot 1`] = `
+<div
+  className="box"
+>
+  <div
+    className="header"
+  >
+    Hello, 
+    anonymous
+    !
+  </div>
+  <div
+    className="body"
+  >
+    Let's start tracking you time together ;)
+  </div>
+  <div
+    className="footer"
+  >
+    <Link
+      replace={false}
+      to="/time"
+    >
+      <Button
+        block={false}
+        ghost={false}
+        icon="play-circle"
+        loading={false}
+        size="large"
+        type="primary"
+      >
+        Start
+      </Button>
+    </Link>
+  </div>
+</div>
+`;
+
+exports[`<Home /> <Home /> with props user.name should match snapshot 1`] = `
+<div
+  className="box"
+>
+  <div
+    className="header"
+  >
+    Hello, 
+    Test name
+    !
+  </div>
+  <div
+    className="body"
+  >
+    Let's start tracking you time together ;)
+  </div>
+  <div
+    className="footer"
+  >
+    <Link
+      replace={false}
+      to="/time"
+    >
+      <Button
+        block={false}
+        ghost={false}
+        icon="play-circle"
+        loading={false}
+        size="large"
+        type="primary"
+      >
+        Start
+      </Button>
+    </Link>
+  </div>
+</div>
+`;
