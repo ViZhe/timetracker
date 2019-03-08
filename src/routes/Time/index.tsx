@@ -88,7 +88,7 @@ class Time extends Component<ITimeProps, ITimeState> {
       });
     }
   }
-  componentWillMount() {
+  componentDidMount() {
     this.removeAndGenerateData(this.state.currentDate);
   }
 
