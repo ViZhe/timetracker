@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound /> should match snapshot 1`] = `
+<div
+  className="box"
+>
+  <div
+    className="header"
+  >
+    Oops, hmmm!
+  </div>
+  <div
+    className="body"
+  >
+    Something went wrong.
+  </div>
+  <div
+    className="footer"
+  >
+    <Link
+      replace={false}
+      to="/"
+    >
+      <Button
+        block={false}
+        ghost={false}
+        icon="home"
+        loading={false}
+        size="large"
+        type="primary"
+      >
+        Home
+      </Button>
+    </Link>
+  </div>
+</div>
+`;

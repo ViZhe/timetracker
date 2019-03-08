@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from './index.module.css';
 
 
-const NotFound: React.FC = () => (
+export const NotFound: React.FC = () => (
   <div className={styles.box}>
     <div className={styles.header}>Oops, hmmm!</div>
     <div className={styles.body}>Something went wrong.</div>
